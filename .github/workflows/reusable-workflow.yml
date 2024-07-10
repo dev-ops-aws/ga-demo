@@ -1,0 +1,31 @@
+# .github/workflows/reusable-workflow.yml
+name: "Reusable Workflow"
+
+on:
+  workflow_call:
+    inputs:
+      branch:
+        description: "Branch name"
+        required: true
+        type: string
+
+jobs:
+  job-for-main:
+    if: ${{ inputs.branch == 'main' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Run main branch specific task
+        run: echo "Running job for the main branch"
+
+  job-for-dev:
+    if: ${{ inputs.branch == 'dev' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Run dev branch specific task
+        run: echo "Running job for the dev branch"
