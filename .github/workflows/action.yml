@@ -1,0 +1,30 @@
+name: 'Composite Actions'
+description: 'Example of COmposite Actions'
+inputs:
+  repo:
+    description: "The GitHub repository"
+    required: true
+    default: 'SampleGIt'
+  variable: 
+    description: "A custom variable"
+    required: true
+    default: 'samplecustomvariable'
+  secret:
+    description: "A secret value"
+    required: true
+    default: 'samplesecretvalue'
+runs:
+  using: "composite"
+  steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+    - name: Print repository name
+      run: echo "Repository $INPUT_REPONAME"
+      shell: bash
+      env:
+        INPUT_REPONAME: ${{ inputs.repo }}
+    - name: Print custom variable
+      run: echo "Variable $INPUT_VARIABLE"
+      shell: bash
+      env:
+        INPUT_VARIABLE: ${{ inputs.variable }}
