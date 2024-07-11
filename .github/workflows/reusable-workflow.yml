@@ -16,3 +16,15 @@ jobs:
     steps:
      - name: greet step
        run: echo "Hello, ${{ inputs.name}}!"
+  job-for-main:
+    runs-on: ubuntu-latest
+    if: ${{ inputs.name == "main" }}
+    steps:
+      - name: greet step
+        run: echo "Hello, ${{ inputs.name}}!"
+  job-for-dev:
+    runs-on: ubuntu-latest
+    if: ${{ inputs.name == "dev" }}
+    steps:
+      - name: greet step
+        run: echo "Hello, ${{ inputs.name}}!"
