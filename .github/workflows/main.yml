@@ -25,4 +25,5 @@ jobs:
       - name: call reusable workflow
         uses: ./.github/workflows/reusable-workflow.yml
         with:
-          name: ${{ env.branch_name }}
+          #name: ${{ env.branch_name }}
+          name: "Welcome Github"
