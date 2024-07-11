@@ -12,14 +12,14 @@ on:
 
 jobs:
   job-for-main:
-    runs-on: ubuntu-latest
     if: ${{ inputs.name == 'main' }}
+    runs-on: ubuntu-latest
     steps:
       - name: run main branch
         run: echo "execute main branch code"
-  #job-for-dev:
-  #  runs-on: ubuntu-latest
-  #  if: ${{ inputs.name == 'dev }}
-  #  steps:
-  #    - name: run dev branch
-  #      run: echo "execute dev branch code"
+  job-for-dev:
+    if: ${{ inputs.name == 'dev }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: run dev branch
+        run: echo "execute dev branch code"
