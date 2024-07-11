@@ -23,6 +23,6 @@ jobs:
         run: echo "branch_name=${GITHUB_REF#refs/heads/}" >> $GITHUB_ENV
 
       - name: Call reusable workflow
-        uses: ./.github/workflows/reusable-workflow.yml
+        uses: ./.github/workflows
         with:
           branch: ${{ env.branch_name }}
