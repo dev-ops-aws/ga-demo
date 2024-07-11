@@ -20,11 +20,11 @@ jobs:
     runs-on: ubuntu-latest
     if: ${{ inputs.name == "main" }}
     steps:
-      - name: greet step
+      - name: run main branch
         run: echo "Hello, ${{ inputs.name}}!"
   job-for-dev:
     runs-on: ubuntu-latest
     if: ${{ inputs.name == "dev" }}
     steps:
-      - name: greet step
+      - name: run dev branch
         run: echo "Hello, ${{ inputs.name}}!"
