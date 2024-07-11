@@ -36,6 +36,6 @@ jobs:
         run: echo $branch_name
         
       - name: Call reusable workflow
-        uses: ./.github/workflows/reusable-workflow.yml
+        uses: ./.github/workflows
         with:
           branch: ${{ github.event.inputs.branch }}
