@@ -1,0 +1,18 @@
+# .github/workflows/reusable-workflow.yml
+name: "Reusable Workflow"
+
+on:
+  workflow_call:
+    inputs:
+      name:
+        description: "Branch name"
+        required: true
+        type: string
+        default: 'main'
+
+jobs:
+  greet:
+    runs-on: ubuntu-latest
+    steps:
+     - name: greet step
+       run: echo "Hello, $ {{ inputs.name}}!"
