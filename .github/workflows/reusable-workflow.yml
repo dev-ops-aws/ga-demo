@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: run greet
-        run: echo $${ inputs.name}} 
+        run: echo ${ inputs.name }} 
  # job-for-main:
  #   runs-on: ubuntu-latest
  #   if: ${{ inputs.name == "main" }}
