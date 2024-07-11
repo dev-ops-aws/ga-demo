@@ -4,7 +4,7 @@ name: "Reusable Workflow"
 on:
   workflow_call:
     inputs:
-      branch:
+      branch_name:
         description: "Branch name"
         required: true
         type: string
@@ -17,13 +17,13 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
       with:
-        ref: ${{ inputs.branch }}
+        ref: ${{ inputs.branch_name }}
         
     - name: Run script based on branch
       run: |
-        if [[ "${{ inputs.branch}}" == "main" ]]; then
+        if [[ "${{ inputs.branch_name}}" == "main" ]]; then
           echo "Running job for the main branch"
-         elif [[ "${{ inputs.branch}}" == 'dev' ]]; then
+         elif [[ "${{ inputs.branch_name}}" == 'dev' ]]; then
           echo "Running job for the dev branch"
          else
            echo "other branch"
