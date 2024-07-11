@@ -19,7 +19,7 @@ jobs:
         run: echo "execute main branch code"
 
   job-for-dev:
-    if: ${{ inputs.name == 'dev }}
+    if: ${{ inputs.name == 'dev' }}
     runs-on: ubuntu-latest
     steps:
       - name: run dev branch
