@@ -18,7 +18,7 @@ jobs:
    #     run: echo ${{ inputs.name }} 
   job-for-main:
     runs-on: ubuntu-latest
-    if: ${{ inputs.name == "main" }}
+    if: ${{ inputs.name == 'main' }}
     steps:
       - name: run main branch
         run: echo "execute main branch code"
