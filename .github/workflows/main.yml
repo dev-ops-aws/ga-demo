@@ -15,18 +15,4 @@ jobs:
   call-reusable-workflow:
     uses: ./.github/workflows/reusable-workflow.yml
     with:
-      name: "Welcome Github"
-    #runs-on: ubuntu-latest
-    #steps:
-      #- name: Checkout repository
-      #  uses: actions/checkout@v2
-      
-      #- name: Determine branch name
-      #  run: echo "branch_name=${GITHUB_REF#refs/heads/}" >> $GITHUB_ENV
-      #  shell: bash
-      
-     # - name: call reusable workflow
-      #  uses: ./.github/workflows/reusable-workflow.yml
-       # with:
-        #  #name: ${{ env.branch_name }}
-         # name: "Welcome Github"
+      name: ${{ github.ref == 'refs/heads/main' && 'main' || 'dev' }}
