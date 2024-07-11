@@ -28,4 +28,4 @@ jobs:
       - name: Call reusable workflow
         uses: ./.github/workflows
         with:
-          branch: ${{ env.branch_name }}
+          branch: ${{ env.BRANCH_NAME }}
