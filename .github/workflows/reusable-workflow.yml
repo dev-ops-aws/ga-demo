@@ -16,7 +16,7 @@ jobs:
   #  steps:
   #    - name: run greet
    #     run: echo ${{ inputs.name }} 
-  job-for-main:
+  greet:
     runs-on: ubuntu-latest
     #if: ${{ inputs.name == "main" }}
     steps:
