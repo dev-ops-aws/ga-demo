@@ -11,11 +11,6 @@ on:
         default: 'main'
 
 jobs:
-  greet:
-    runs-on: ubuntu-latest
-    steps:
-     - name: greet step
-       run: echo "Hello, ${{ inputs.name}}!"
   job-for-main:
     runs-on: ubuntu-latest
     if: ${{ inputs.name == "main" }}
