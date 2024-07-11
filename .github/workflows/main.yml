@@ -1,23 +1,33 @@
 # .github/workflows/main.yml
 name: "Main Workflow"
 
-on:
-  push:
-    branches:
-      - main
-      - dev
-  pull_request:
-    branches:
-      - main
-      - dev
+#on:
+#  push:
+#    branches:
+#      - main
+#      - dev
+#  pull_request:
+#    branches:
+#      - main
+#      - dev
 
+on:
+  workflow_call:
+    inputs:
+      branch:
+        description: 'Branch to run the workflow on'
+        required: true
+        type: string
+        default: 'main'
+        
 jobs:
   call-reusable-workflow:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-        
+        with:
+          ref: ${{ inputs.branch }}
       - name: Determine branch name
         id: get_branch
         run: echo "branch_name=${GITHUB_REF#refs/heads/}" >> $GITHUB_ENV
@@ -26,6 +36,6 @@ jobs:
         run: echo $branch_name
         
       - name: Call reusable workflow
-        uses: ./.github/workflows
+        uses: ./.github/workflows/reusable-workflow.yml
         with:
-          branch: ${{ env.BRANCH_NAME }}
+          branch: ${{ github.event.inputs.branch }}
