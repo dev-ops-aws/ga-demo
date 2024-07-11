@@ -3,29 +3,28 @@ name: "Reusable Workflow"
 
 on:
   workflow_call:
-    branch:
-      description: "Branch name"
-      required: true
-      type: string
+    inputs:
+      branch:
+        description: "Branch name"
+        required: true
+        type: string
      
 
 jobs:
   job-for-main:
-    if: ${{ branch == 'main' }}
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Run main branch specific task
-        run: echo "Running job for the main branch"
-
-  job-for-dev:
-    if: ${{ branch == 'dev' }}
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Run dev branch specific task
-        run: echo "Running job for the dev branch"
+    - name: Checkout code
+      uses: actions/checkout@v2
+      with:
+        ref: ${{ inputs.branch }}
+        
+    - name: Run script based on branch
+      run: |
+        if [[ "${{ inputs.branch}}" == "main" ]]; then
+          echo "Running job for the main branch"
+         elif [[ "${{ inputs.branch}}" == 'dev' ]]; then
+          echo "Running job for the dev branch"
+         else
+           echo "other branch"
+         fi  
