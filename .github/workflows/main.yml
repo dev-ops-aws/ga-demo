@@ -1,24 +1,23 @@
 # .github/workflows/main.yml
 name: "Main Workflow"
 
-#on:
-#  push:
-#    branches:
-#      - main
-#      - dev
-#  pull_request:
-#    branches:
-#      - main
-#      - dev
-
 on:
-  workflow_dispatch:
-    inputs:
-      branch:
-        description: 'Branch to run the workflow on'
-        required: true
-        type: string
-        default: 'main'
+  push:
+    branches:
+      - main
+      - dev
+  pull_request:
+    branches:
+      - main
+      - dev
+#on:
+#  workflow_dispatch:
+#    inputs:
+#      branch:
+#        description: 'Branch to run the workflow on'
+#        required: true
+#        type: string
+#        default: 'main'
         
 jobs:
   call-reusable-workflow:
@@ -36,6 +35,6 @@ jobs:
         run: echo $branch_name
         
       - name: Call reusable workflow
-        uses: ./.github/workflows
+        uses: ./.github/workflows/reusable-workflow.yml@main
         with:
-          branch: ${{ github.event.inputs.branch }}
+          branch: ${{ env.branch_name }}
